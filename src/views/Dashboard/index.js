@@ -1,9 +1,8 @@
 import React from 'react';
 import { Layout, Menu, Breadcrumb } from 'antd';
 import {
+  LogoutOutlined,
   DesktopOutlined,
-  PieChartOutlined,
-  FileOutlined,
   TeamOutlined,
   UserOutlined,
 } from '@ant-design/icons';
@@ -25,9 +24,11 @@ class Dashboard extends React.Component {
     return (
       <Layout style={{ minHeight: '100vh' }}>
         <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
-          <div className="logo" />
+          <div className="logo">
+            <img src="icon.png" alt="bugTracker" height="60rem"/>
+          </div>
           <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-            <Menu.Item key="1" icon={<PieChartOutlined />}>
+            <Menu.Item key="1" icon={<DesktopOutlined />}>
               Option 1
             </Menu.Item>
             <Menu.Item key="2" icon={<DesktopOutlined />}>
@@ -42,7 +43,7 @@ class Dashboard extends React.Component {
               <Menu.Item key="6">Team 1</Menu.Item>
               <Menu.Item key="8">Team 2</Menu.Item>
             </SubMenu>
-            <Menu.Item key="9" icon={<FileOutlined />} />
+            <Menu.Item key="9" onClick={() => {alert("Odajva")}} icon={<LogoutOutlined />}>Log out</Menu.Item>
           </Menu>
         </Sider>
         <Layout className="site-layout">
