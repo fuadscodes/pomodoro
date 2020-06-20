@@ -6,6 +6,7 @@ import {
   TeamOutlined,
   UserOutlined,
 } from '@ant-design/icons';
+import fire from "../../config/fire";
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -13,6 +14,8 @@ const { SubMenu } = Menu;
 class Dashboard extends React.Component {
   state = {
     collapsed: false,
+    email: "",
+
   };
 
   onCollapse = collapsed => {
@@ -20,7 +23,22 @@ class Dashboard extends React.Component {
     this.setState({ collapsed });
   };
 
+  logout = (event) => {
+    try {
+        fire.auth().signOut();
+    } catch (e) {
+        console.log(e);
+    }
+  }
+
   render() {
+    fire.auth().onAuthStateChanged(user => {
+      if (user) {
+          this.state.email = user.email;
+      } else {
+          this.props.history.push("/");
+      }
+    })
     return (
       <Layout style={{ minHeight: '100vh' }}>
         <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
@@ -43,7 +61,7 @@ class Dashboard extends React.Component {
               <Menu.Item key="6">Team 1</Menu.Item>
               <Menu.Item key="8">Team 2</Menu.Item>
             </SubMenu>
-            <Menu.Item key="9" onClick={() => {alert("Odajva")}} icon={<LogoutOutlined />}>Log out</Menu.Item>
+            <Menu.Item key="9" onClick={() => {this.logout()}} icon={<LogoutOutlined />}>Log out</Menu.Item>
           </Menu>
         </Sider>
         <Layout className="site-layout">
