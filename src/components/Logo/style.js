@@ -8,9 +8,6 @@ export const LogoDiv = styled.div`
     padding-left: 2em;
 `;
 
-export const LogoWrapper = styled.div`
-`;
-
 export const Blue = styled.div`
     color: #1890ff;
     font-weight: bold;
