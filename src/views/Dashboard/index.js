@@ -8,7 +8,9 @@ import {
 } from '@ant-design/icons';
 import fire from "../../config/fire";
 import Logo from '../../components/Logo';
-import Timers from '../../components/Timers/Timers';
+import Timers from '../../components/Timers/index';
+import Report from '../../components/Report/index';
+import Ranking from '../../components/Ranking/index';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -45,10 +47,10 @@ const Dashboard = (props) => {
             <Menu.Item key="1" icon={<ClockCircleOutlined />} onClick={() => {setContent(<Timers/>)}}>
               Timers
             </Menu.Item>
-            <Menu.Item key="2" icon={<InfoCircleOutlined />}>
+            <Menu.Item key="2" icon={<InfoCircleOutlined />} onClick={() => {setContent(<Report/>)}}>
               Report
             </Menu.Item>
-            <Menu.Item key="3" icon={<BarChartOutlined />}>
+            <Menu.Item key="3" icon={<BarChartOutlined />} onClick={() => {setContent(<Ranking/>)}}>
               Ranking
             </Menu.Item>
             <Menu.Item key="9" onClick={() => {logout()}} icon={<LogoutOutlined />}>Logout</Menu.Item>
@@ -69,7 +71,5 @@ const Dashboard = (props) => {
       </Layout>
     );
   }
-
-  /* TIME LEFT I TIMERS POPRAVITI I PARADAJZ */
 
 export default Dashboard;
