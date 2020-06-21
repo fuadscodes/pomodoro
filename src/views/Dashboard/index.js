@@ -8,13 +8,15 @@ import {
 } from '@ant-design/icons';
 import fire from "../../config/fire";
 import Logo from '../../components/Logo';
+import Timers from '../../components/Timers/Timers';
 
 const { Header, Content, Footer, Sider } = Layout;
 
 const Dashboard = (props) => {
 
   const [colapsed, setColapsed] = useState(false);
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
+  const [content, setContent] = useState(<Timers/>);
 
   const onCollapse = collapsed => {
     setColapsed(!colapsed);
@@ -40,7 +42,7 @@ const Dashboard = (props) => {
       <Layout style={{ minHeight: '100vh' }}>
         <Sider collapsible collapsed={colapsed} onCollapse={onCollapse}>
           <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-            <Menu.Item key="1" icon={<ClockCircleOutlined />}>
+            <Menu.Item key="1" icon={<ClockCircleOutlined />} onClick={() => {setContent(<Timers/>)}}>
               Timers
             </Menu.Item>
             <Menu.Item key="2" icon={<InfoCircleOutlined />}>
@@ -59,7 +61,7 @@ const Dashboard = (props) => {
               <Breadcrumb.Item>User / {email}</Breadcrumb.Item>
             </Breadcrumb>
             <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-              Bill is a cat.
+              {content}
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>Pomodoro Tracker ©2020 Created by Fuad Herac</Footer>

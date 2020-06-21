@@ -1,0 +1,60 @@
+.TimeLeft {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    vertical-align: center;
+}
+
+.Start {
+    background-color: #15d798;
+    border: 1px solid #15d798;
+    width: 100px;
+    height: 50px;
+    border-radius: 15px;
+    color: whitesmoke;
+    font-family: OpenSans;
+}
+
+.Stop {
+    background-color: #e71919;
+    border: 1px solid #e71919;
+    width: 100px;
+    height: 50px;
+    border-radius: 15px;
+    font-family: OpenSans;
+    color: whitesmoke;
+}
+
+.StartStop {
+    display: flex;
+    justify-content: space-between;
+    width: 205px;
+}
+
+.PomodoroImage {
+    background-image: url("pomodoro.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: whitesmoke;
+    width: 200px;
+}
+
+.Time {
+    font-weight: bold;
+    padding-top: 54%;
+    font-size: 26px;
+}
+
+.BreakSession {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

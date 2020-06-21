@@ -3,7 +3,10 @@ import { LogoDiv, Blue, White } from './style';
 
 const Logo = () => {
     return (
-        <LogoDiv><Blue>Pomodoro</Blue><White>Tracker</White></LogoDiv>
+        <LogoDiv>
+            <Blue>Pomodoro</Blue>
+            <White>Tracker</White>
+        </LogoDiv>
     )
 }
 
