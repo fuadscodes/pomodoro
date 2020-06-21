@@ -26,13 +26,14 @@ export const PomodoroImage = styled.div`
     justify-content: center;
     align-items: center;
     color: whitesmoke;
-    width: 200px;
+    width: 150px;
 `;
 
 export const Time = styled.div`
+    color: #f8f4f4;
     font-weight: bold;
-    padding-top: 54%;
-    font-size: 26px;
+    padding-top: 53%;
+    font-size: 30px;
 `;
 
 export const BreakSession = styled.div`

@@ -1,10 +1,9 @@
 import React, {useState} from "react";
-import "./Timers.css";
 import Break from "./Break/index";
 import Session from "./Session/index";
 import moment from "moment";
 import TimeLeft from "./TimeLeft/index";
-import { BreakSession } from './style';
+import { TimersWrapper, BreakSession } from './style';
 
 const Timers = (props) => {
 
@@ -42,7 +41,7 @@ const Timers = (props) => {
     }
 
     return (
-        <div className="Timers">
+        <TimersWrapper>
             <TimeLeft sessionLength={sessionLength} breakLength={breakLength}/>
             <BreakSession>
                 <Break
@@ -56,7 +55,7 @@ const Timers = (props) => {
                     incrementSessionLength={incrementSessionLength}
                 />
             </BreakSession>
-        </div>
+        </TimersWrapper>
     )
 }
 
