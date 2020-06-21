@@ -1,74 +1,64 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Layout, Menu, Breadcrumb } from 'antd';
 import {
   LogoutOutlined,
-  DesktopOutlined,
-  TeamOutlined,
-  UserOutlined,
+  ClockCircleOutlined,
+  InfoCircleOutlined,
+  BarChartOutlined,
 } from '@ant-design/icons';
 import fire from "../../config/fire";
 
 const { Header, Content, Footer, Sider } = Layout;
-const { SubMenu } = Menu;
 
-class Dashboard extends React.Component {
-  state = {
-    collapsed: false,
-    email: "",
+const Dashboard = (props) => {
 
+  const [colapsed, setColapsed] = useState(false);
+  const [email, setEmail] = useState("");
+
+  const onCollapse = collapsed => {
+    setColapsed(!colapsed);
   };
 
-  onCollapse = collapsed => {
-    console.log(collapsed);
-    this.setState({ collapsed });
-  };
-
-  logout = (event) => {
+  const logout = () => {
     try {
         fire.auth().signOut();
-    } catch (e) {
-        console.log(e);
+    } catch (error) {
+        console.log(error);
     }
   }
 
-  render() {
     fire.auth().onAuthStateChanged(user => {
       if (user) {
-          this.state.email = user.email;
+          setEmail(user.email);
       } else {
-          this.props.history.push("/");
+          props.history.push("/");
       }
     })
+
     return (
       <Layout style={{ minHeight: '100vh' }}>
-        <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse}>
+        <Sider collapsible collapsed={colapsed} onCollapse={onCollapse}>
           <div className="logo">
             <img src="icon.png" alt="bugTracker" height="60rem"/>
           </div>
           <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-            <Menu.Item key="1" icon={<DesktopOutlined />}>
-              Option 1
+            <Menu.Item key="1" icon={<ClockCircleOutlined />}>
+              Timers
             </Menu.Item>
-            <Menu.Item key="2" icon={<DesktopOutlined />}>
-              Option 2
+            <Menu.Item key="2" icon={<InfoCircleOutlined />}>
+              Report
             </Menu.Item>
-            <SubMenu key="sub1" icon={<UserOutlined />} title="User">
-              <Menu.Item key="3">Tom</Menu.Item>
-              <Menu.Item key="4">Bill</Menu.Item>
-              <Menu.Item key="5">Alex</Menu.Item>
-            </SubMenu>
-            <SubMenu key="sub2" icon={<TeamOutlined />} title="Team">
-              <Menu.Item key="6">Team 1</Menu.Item>
-              <Menu.Item key="8">Team 2</Menu.Item>
-            </SubMenu>
-            <Menu.Item key="9" onClick={() => {this.logout()}} icon={<LogoutOutlined />}>Log out</Menu.Item>
+            <Menu.Item key="3" icon={<BarChartOutlined />}>
+              Ranking
+            </Menu.Item>
+            <Menu.Item key="9" onClick={() => {logout()}} icon={<LogoutOutlined />}>Logout</Menu.Item>
           </Menu>
         </Sider>
         <Layout className="site-layout">
           <Header className="site-layout-background" style={{ padding: 0 }} />
           <Content style={{ margin: '0 16px' }}>
             <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>User / {this.state.email}</Breadcrumb.Item>
+              <Breadcrumb.Item>User / {email}</Breadcrumb.Item>
             </Breadcrumb>
             <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
               Bill is a cat.
@@ -79,6 +69,6 @@ class Dashboard extends React.Component {
       </Layout>
     );
   }
-}
+
 
 export default Dashboard;
