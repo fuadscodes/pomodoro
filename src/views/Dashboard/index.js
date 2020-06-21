@@ -7,6 +7,7 @@ import {
   BarChartOutlined,
 } from '@ant-design/icons';
 import fire from "../../config/fire";
+import Logo from '../../components/Logo';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -38,9 +39,6 @@ const Dashboard = (props) => {
     return (
       <Layout style={{ minHeight: '100vh' }}>
         <Sider collapsible collapsed={colapsed} onCollapse={onCollapse}>
-          <div className="logo">
-            <img src="icon.png" alt="bugTracker" height="60rem"/>
-          </div>
           <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
             <Menu.Item key="1" icon={<ClockCircleOutlined />}>
               Timers
@@ -55,7 +53,7 @@ const Dashboard = (props) => {
           </Menu>
         </Sider>
         <Layout className="site-layout">
-          <Header className="site-layout-background" style={{ padding: 0 }} />
+          <Header className="site-layout-background" style={{ padding: 0 }}><Logo/></Header>
           <Content style={{ margin: '0 16px' }}>
             <Breadcrumb style={{ margin: '16px 0' }}>
               <Breadcrumb.Item>User / {email}</Breadcrumb.Item>
