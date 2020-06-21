@@ -70,5 +70,6 @@ const Dashboard = (props) => {
     );
   }
 
+  /* TIME LEFT I TIMERS POPRAVITI I PARADAJZ */
 
 export default Dashboard;

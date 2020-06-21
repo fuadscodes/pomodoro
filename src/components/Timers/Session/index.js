@@ -14,7 +14,6 @@ const Session = (props) => {
                 <Button onClick={props.incrementSessionLength}>+</Button>
             </Controls>
         </SessionWrapper>
-
     )
 }
 

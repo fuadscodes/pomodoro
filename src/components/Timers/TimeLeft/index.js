@@ -2,7 +2,7 @@ import React, {useEffect, useState, useRef} from "react"
 import moment from "moment";
 import momentDurationFormatSetup from 'moment-duration-format';
 import { Button, message } from 'antd';
-import "./TimeLeft.css";
+import { TimeLeftWrapper, StartStop, PomodoroImage, Time } from './style';
 
 momentDurationFormatSetup(moment)
 
@@ -28,13 +28,14 @@ const TimeLeft = (props) => {
                         if(newTimeLeft >= 0) {
                             return newTimeLeft;
                         } else {
+                            /* Zašto se ovaj dio izvršava 2 puta skontati */
                             audioElement.current.play();
                             message.success("Thank you for using PomodoroTracker!", 3);
                             if(currentSessionType === 'Session') {
-                                setCurrentSessionType('Break');
                                 isStarted = false;
                                 setDisabled(false);
                                 console.log("database");
+                                setCurrentSessionType('Break');
                                 return props.breakLength;
                             } else if (currentSessionType === 'Break') {
                                 setCurrentSessionType('Session');
@@ -51,6 +52,7 @@ const TimeLeft = (props) => {
 
     const handleStopClick = () => {
         if(isStarted) {
+            message.error("Start again!", 3);
             setCurrentSessionType('Session');
             clearInterval(intervalId);
             setTimeLeft(props.sessionLength);
@@ -68,19 +70,19 @@ const TimeLeft = (props) => {
     const formattedTimeLeft = moment.duration(timeLeft, 's').format('mm:ss', {trim: false})
 
     return (
-        <div className="TimeLeft">
-            <div className="PomodoroImage">
-                <p className="Time">{formattedTimeLeft}</p>
-            </div>
+        <TimeLeftWrapper>
+            <PomodoroImage>
+                <Time><p>{formattedTimeLeft}</p></Time>
+            </PomodoroImage>
             <p>{currentSessionType}</p>
-            <div className="StartStop">
+            <StartStop>
                 <Button onClick={handleStartClick} disabled={disabled}>Start</Button>
                 <Button onClick={handleStopClick} disabled={!disabled}>Stop</Button>
-            </div>
+            </StartStop>
             <audio id="beep" ref={audioElement}>
                 <source src="alarm.mp3" type="audio/mpeg" />
             </audio>
-        </div>
+        </TimeLeftWrapper>
     )
 }
 

@@ -3,7 +3,8 @@ import "./Timers.css";
 import Break from "./Break/index";
 import Session from "./Session/index";
 import moment from "moment";
-import TimeLeft from "./TimeLeft/TimeLeft";
+import TimeLeft from "./TimeLeft/index";
+import { BreakSession } from './style';
 
 const Timers = (props) => {
 
@@ -43,7 +44,7 @@ const Timers = (props) => {
     return (
         <div className="Timers">
             <TimeLeft sessionLength={sessionLength} breakLength={breakLength}/>
-            <div className="BreakSession">
+            <BreakSession>
                 <Break
                     breakLengthInMinutes={breakLengthInMinutes}
                     decrementBreakLength={decrementBreakLength}
@@ -54,7 +55,7 @@ const Timers = (props) => {
                     decrementSessionLength={decrementSessionLength}
                     incrementSessionLength={incrementSessionLength}
                 />
-            </div>
+            </BreakSession>
         </div>
     )
 }

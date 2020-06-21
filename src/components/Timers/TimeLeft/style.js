@@ -1,4 +1,6 @@
-.TimeLeft {
+import styled from 'styled-components';
+
+export const TimeLeftWrapper = styled.div`
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -7,35 +9,15 @@
     justify-content: center;
     align-items: center;
     vertical-align: center;
-}
+`;
 
-.Start {
-    background-color: #15d798;
-    border: 1px solid #15d798;
-    width: 100px;
-    height: 50px;
-    border-radius: 15px;
-    color: whitesmoke;
-    font-family: OpenSans;
-}
-
-.Stop {
-    background-color: #e71919;
-    border: 1px solid #e71919;
-    width: 100px;
-    height: 50px;
-    border-radius: 15px;
-    font-family: OpenSans;
-    color: whitesmoke;
-}
-
-.StartStop {
+export const StartStop = styled.div`
     display: flex;
     justify-content: space-between;
     width: 205px;
-}
+`;
 
-.PomodoroImage {
+export const PomodoroImage = styled.div`
     background-image: url("pomodoro.png");
     background-size: 100%;
     background-repeat: no-repeat;
@@ -45,16 +27,16 @@
     align-items: center;
     color: whitesmoke;
     width: 200px;
-}
+`;
 
-.Time {
+export const Time = styled.div`
     font-weight: bold;
     padding-top: 54%;
     font-size: 26px;
-}
+`;
 
-.BreakSession {
+export const BreakSession = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-}
+`;
