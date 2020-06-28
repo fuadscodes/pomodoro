@@ -10,8 +10,14 @@ const Session = (props) => {
             <p>Session</p>
             <p>{props.sessionLengthInMinutes} min</p>
             <Controls>
-                <Button onClick={props.decrementSessionLength}>-</Button>
-                <Button onClick={props.incrementSessionLength}>+</Button>
+                <Button 
+                    danger 
+                    onClick={props.decrementSessionLength}>-</Button>
+
+                <Button 
+                    style={{borderColor: '#52c41a'}} 
+                    onClick={props.incrementSessionLength}>+</Button>
+                    
             </Controls>
         </SessionWrapper>
     )

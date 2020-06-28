@@ -76,8 +76,15 @@ const TimeLeft = (props) => {
             </PomodoroImage>
             <p>{currentSessionType}</p>
             <StartStop>
-                <Button onClick={handleStartClick} disabled={disabled}>Start</Button>
-                <Button onClick={handleStopClick} disabled={!disabled}>Stop</Button>
+                <Button 
+                    onClick={handleStartClick} 
+                    disabled={disabled}>Start</Button>
+
+                <Button 
+                    danger 
+                    onClick={handleStopClick} 
+                    disabled={!disabled}>Stop</Button>
+
             </StartStop>
             <audio id="beep" ref={audioElement}>
                 <source src="alarm.mp3" type="audio/mpeg" />

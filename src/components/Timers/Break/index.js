@@ -10,8 +10,14 @@ const Break = (props) => {
             <p>Break</p>
             <p>{props.breakLengthInMinutes} min</p>
             <Controls>
-                <Button onClick={props.decrementBreakLength}>-</Button>
-                <Button onClick={props.incrementBreakLength}>+</Button>
+                <Button 
+                    danger 
+                    onClick={props.decrementBreakLength}>-</Button>
+
+                <Button 
+                    style={{borderColor: '#52c41a'}} 
+                    onClick={props.incrementBreakLength}>+</Button>
+                    
             </Controls>
         </BreakWrapper>
 
