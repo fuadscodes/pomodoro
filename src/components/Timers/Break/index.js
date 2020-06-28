@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from 'antd';
-import { Controls } from '../components/Controls';
+import { Controls, PlusButton } from '../components/Controls';
 import { BreakWrapper } from './stlye';
 
 const Break = (props) => {
@@ -14,10 +14,8 @@ const Break = (props) => {
                     danger 
                     onClick={props.decrementBreakLength}>-</Button>
 
-                <Button 
-                    style={{borderColor: '#52c41a'}} 
-                    onClick={props.incrementBreakLength}>+</Button>
-                    
+                <PlusButton onClick={props.incrementBreakLength}>+</PlusButton>
+
             </Controls>
         </BreakWrapper>
 

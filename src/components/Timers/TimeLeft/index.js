@@ -3,6 +3,7 @@ import moment from "moment";
 import momentDurationFormatSetup from 'moment-duration-format';
 import { Button, message } from 'antd';
 import { TimeLeftWrapper, StartStop, PomodoroImage, Time } from './style';
+import { PlusButton } from '../components/Controls';
 
 momentDurationFormatSetup(moment)
 
@@ -76,9 +77,10 @@ const TimeLeft = (props) => {
             </PomodoroImage>
             <p>{currentSessionType}</p>
             <StartStop>
-                <Button 
-                    onClick={handleStartClick} 
-                    disabled={disabled}>Start</Button>
+                    <PlusButton 
+                        onClick={handleStartClick} 
+                        disabled={disabled}>Start</PlusButton>
+
 
                 <Button 
                     danger 
