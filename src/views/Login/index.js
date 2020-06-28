@@ -12,7 +12,6 @@ const Login = (props) => {
   let history = useHistory();
 
   const onFinish = values => {
-    console.log('Received values of form: ', values);
     fire.auth().signInWithEmailAndPassword(values.email, values.password).then(
         (user) => {
             console.log(user);

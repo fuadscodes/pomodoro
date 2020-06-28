@@ -30,7 +30,7 @@ const TimeLeft = (props) => {
                         } else {
                             /* Zašto se ovaj dio izvršava 2 puta skontati */
                             audioElement.current.play();
-                            message.success("Thank you for using PomodoroTracker!", 3);
+                            message.success("Thank you for using PomodoroTracker!", 2);
                             if(currentSessionType === 'Session') {
                                 isStarted = false;
                                 setDisabled(false);
@@ -46,7 +46,7 @@ const TimeLeft = (props) => {
                         }
                     })
                 }
-            }, 100);
+            }, 1000);
             setIntervalId(newIntervalId);
         }
 
