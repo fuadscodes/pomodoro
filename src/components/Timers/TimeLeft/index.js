@@ -47,7 +47,7 @@ const TimeLeft = (props) => {
                         }
                     })
                 }
-            }, 1000);
+            }, 100);
             setIntervalId(newIntervalId);
         }
 
