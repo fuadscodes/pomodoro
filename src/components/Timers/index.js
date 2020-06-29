@@ -5,7 +5,7 @@ import moment from "moment";
 import TimeLeft from "./TimeLeft/index";
 import { TimersWrapper, BreakSession } from './style';
 
-const Timers = (props) => {
+const Timers = () => {
 
     const [sessionLength, setSessionLength] = useState(25*60);
     const [disabled, setDisabled] = useState(false);

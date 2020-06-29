@@ -11,4 +11,5 @@ export const BreakSession = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    width: 100%
 `;
