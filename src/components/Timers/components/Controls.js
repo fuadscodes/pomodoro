@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Button } from 'antd';
 
 export const Controls = styled.div`
     display: flex;
@@ -6,36 +7,37 @@ export const Controls = styled.div`
     width: 85px;
 `;
 
-export const PlusButtonMedium = styled.button`
+export const PlusButtonMedium = styled(Button)`
     width: 40%;
     color: #52c41a;
+    border-color: #52c41a;
     &:hover{
         color: #95de64;
         cursor: pointer;
+        border-color: #95de64;
     };
 `;
 
-export const PlusButtonSmall = styled.button`
+export const PlusButtonSmall = styled(Button)`
     color: #52c41a;
+    border-color: #52c41a;
     &:hover{
         color: #95de64;
         cursor: pointer;
+        border-color: #95de64;
     };
-    margin: 1%;
 `;
 
-export const MinusButtonSmall = styled.button`
+export const MinusButtonMedium = styled(Button)`
     width: 40%;
     color: #f5222d;
     &:hover{
         color: #ff7875;
         cursor: pointer;
     };
-    margin: 1%;
 `;
 
-export const MinusButtonMedium = styled.button`
-    width: 40%;
+export const MinusButtonSmall = styled(Button)`
     color: #f5222d;
     &:hover{
         color: #ff7875;

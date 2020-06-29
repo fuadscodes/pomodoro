@@ -9,7 +9,8 @@ const Break = (props) => {
             <p>Break</p>
             <p>{props.breakLengthInMinutes} min</p>
             <Controls>
-                <MinusButtonSmall 
+                <MinusButtonSmall
+                    danger 
                     onClick={props.decrementBreakLength}
                     disabled={props.disabled}>-</MinusButtonSmall>
 

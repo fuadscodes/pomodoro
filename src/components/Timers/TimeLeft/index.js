@@ -3,7 +3,7 @@ import moment from "moment";
 import momentDurationFormatSetup from 'moment-duration-format';
 import { message } from 'antd';
 import { TimeLeftWrapper, StartStop, PomodoroImage, Time } from './style';
-import { PlusButtonMedium, MinusButtonSmall } from '../components/Controls';
+import { PlusButtonMedium, MinusButtonMedium } from '../components/Controls';
 
 momentDurationFormatSetup(moment)
 
@@ -32,6 +32,7 @@ const TimeLeft = (props) => {
                             return newTimeLeft;
                         } else {
                             setDisabled(false);
+                            props.setDisabled(false);
                             audioElement.current.play();
                             message.success("Thank you for using PomodoroTracker!", 2);
                             if(currentSessionType === 'Session') {
@@ -79,7 +80,7 @@ const TimeLeft = (props) => {
             <p>{currentSessionType}</p>
             <StartStop>
                 <PlusButtonMedium onClick={handleStartClick} disabled={disabled}>Start</PlusButtonMedium>
-                <MinusButtonSmall onClick={handleStopClick} disabled={!disabled}>Stop</MinusButtonSmall>
+                <MinusButtonMedium danger onClick={handleStopClick} disabled={!disabled}>Stop</MinusButtonMedium>
             </StartStop>
             <audio id="beep" ref={audioElement}>
                 <source src="alarm.mp3" type="audio/mpeg" />
