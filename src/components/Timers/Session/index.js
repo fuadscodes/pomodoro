@@ -1,7 +1,6 @@
 import React from "react";
-import { Button } from 'antd';
 import { SessionWrapper } from './style';
-import { Controls, PlusButton } from '../components/Controls';
+import { Controls, PlusButtonSmall, MinusButtonSmall } from '../components/Controls';
 
 const Session = (props) => {
 
@@ -10,12 +9,13 @@ const Session = (props) => {
             <p>Session</p>
             <p>{props.sessionLengthInMinutes} min</p>
             <Controls>
-                <Button 
+                <MinusButtonSmall 
                     danger 
-                    onClick={props.decrementSessionLength}>-</Button>
+                    onClick={props.decrementSessionLength}
+                    disabled={props.disabled}
+                    >-</MinusButtonSmall>
                 
-                <PlusButton onClick={props.incrementSessionLength}>+</PlusButton>
-
+                <PlusButtonSmall onClick={props.incrementSessionLength} disabled={props.disabled}>+</PlusButtonSmall>
             </Controls>
         </SessionWrapper>
     )

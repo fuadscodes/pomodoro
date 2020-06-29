@@ -1,9 +1,9 @@
 import React, {useEffect, useState, useRef} from "react"
 import moment from "moment";
 import momentDurationFormatSetup from 'moment-duration-format';
-import { Button, message } from 'antd';
+import { message } from 'antd';
 import { TimeLeftWrapper, StartStop, PomodoroImage, Time } from './style';
-import { PlusButton } from '../components/Controls';
+import { PlusButtonMedium, MinusButtonSmall } from '../components/Controls';
 
 momentDurationFormatSetup(moment)
 
@@ -14,6 +14,7 @@ const TimeLeft = (props) => {
     const [currentSessionType, setCurrentSessionType] = useState('Session');
     const [disabled, setDisabled] = useState(false);
 
+
     useEffect(() => {
         setTimeLeft(props.sessionLength);
     }, [props.sessionLength]);
@@ -21,27 +22,26 @@ const TimeLeft = (props) => {
     let isStarted = intervalId != null;
 
     const handleStartClick = () => {
+            setDisabled(true);
+            props.setDisabled(true);
             const newIntervalId = setInterval(() => {
                 if(isStarted) {
-                    setDisabled(true);
                     setTimeLeft(prevTimeLeft => {
                         const newTimeLeft = prevTimeLeft - 1;
                         if(newTimeLeft >= 0) {
                             return newTimeLeft;
                         } else {
-                            /* Zašto se ovaj dio izvršava 2 puta skontati */
+                            setDisabled(false);
                             audioElement.current.play();
                             message.success("Thank you for using PomodoroTracker!", 2);
                             if(currentSessionType === 'Session') {
                                 isStarted = false;
-                                setDisabled(false);
                                 console.log("database");
                                 setCurrentSessionType('Break');
                                 return props.breakLength;
                             } else if (currentSessionType === 'Break') {
                                 setCurrentSessionType('Session');
                                 isStarted = false;
-                                setDisabled(false);
                                 return props.sessionLength;
                             }
                         }
@@ -53,22 +53,23 @@ const TimeLeft = (props) => {
 
     const handleStopClick = () => {
         if(isStarted) {
+            setDisabled(false);
+            props.setDisabled(false);
             message.error("Start again!", 3);
             setCurrentSessionType('Session');
             clearInterval(intervalId);
             setTimeLeft(props.sessionLength);
             isStarted = false;
-            setDisabled(false);
             audioElement.current.load();
         } else {
+            props.setDisabled(false);
             setCurrentSessionType('Session');
             setTimeLeft(props.sessionLength);
             isStarted = false;
-            setDisabled(false);
         }
     }
 
-    const formattedTimeLeft = moment.duration(timeLeft, 's').format('mm:ss', {trim: false})
+    const formattedTimeLeft = moment.duration(timeLeft, 's').format('mm:ss', {trim: false});
 
     return (
         <TimeLeftWrapper>
@@ -77,16 +78,8 @@ const TimeLeft = (props) => {
             </PomodoroImage>
             <p>{currentSessionType}</p>
             <StartStop>
-                    <PlusButton 
-                        onClick={handleStartClick} 
-                        disabled={disabled}>Start</PlusButton>
-
-
-                <Button 
-                    danger 
-                    onClick={handleStopClick} 
-                    disabled={!disabled}>Stop</Button>
-
+                <PlusButtonMedium onClick={handleStartClick} disabled={disabled}>Start</PlusButtonMedium>
+                <MinusButtonSmall onClick={handleStopClick} disabled={!disabled}>Stop</MinusButtonSmall>
             </StartStop>
             <audio id="beep" ref={audioElement}>
                 <source src="alarm.mp3" type="audio/mpeg" />

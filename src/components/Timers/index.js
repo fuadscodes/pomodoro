@@ -8,6 +8,7 @@ import { TimersWrapper, BreakSession } from './style';
 const Timers = (props) => {
 
     const [sessionLength, setSessionLength] = useState(25*60);
+    const [disabled, setDisabled] = useState(false);
 
     const decrementSessionLength = () => {
         const newSessionLength = sessionLength - 60;
@@ -42,17 +43,19 @@ const Timers = (props) => {
 
     return (
         <TimersWrapper>
-            <TimeLeft sessionLength={sessionLength} breakLength={breakLength}/>
+            <TimeLeft sessionLength={sessionLength} breakLength={breakLength} setDisabled={setDisabled}/>
             <BreakSession>
                 <Break
                     breakLengthInMinutes={breakLengthInMinutes}
                     decrementBreakLength={decrementBreakLength}
                     incrementBreakLength={incrementBreakLength}
+                    disabled={disabled}
                 />
                 <Session
                     sessionLengthInMinutes={sessionLengthInMinutes}
                     decrementSessionLength={decrementSessionLength}
                     incrementSessionLength={incrementSessionLength}
+                    disabled={disabled}
                 />
             </BreakSession>
         </TimersWrapper>

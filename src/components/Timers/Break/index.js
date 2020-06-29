@@ -1,6 +1,5 @@
 import React from "react";
-import { Button } from 'antd';
-import { Controls, PlusButton } from '../components/Controls';
+import { Controls, PlusButtonSmall, MinusButtonSmall } from '../components/Controls';
 import { BreakWrapper } from './stlye';
 
 const Break = (props) => {
@@ -10,12 +9,11 @@ const Break = (props) => {
             <p>Break</p>
             <p>{props.breakLengthInMinutes} min</p>
             <Controls>
-                <Button 
-                    danger 
-                    onClick={props.decrementBreakLength}>-</Button>
+                <MinusButtonSmall 
+                    onClick={props.decrementBreakLength}
+                    disabled={props.disabled}>-</MinusButtonSmall>
 
-                <PlusButton onClick={props.incrementBreakLength}>+</PlusButton>
-
+                <PlusButtonSmall onClick={props.incrementBreakLength} disabled={props.disabled}>+</PlusButtonSmall>
             </Controls>
         </BreakWrapper>
 
