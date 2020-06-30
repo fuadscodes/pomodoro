@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Descriptions } from 'antd';
 import { StyledDescriptions } from './style';
+import axios from '../../config/axios-pomodoro';
 
 const Report = (props) => {
+
+    const [seconds, setSeconds] = useState(0);
+
+    // Get funkcija za povlačenje svih podataka iz baze i onda napisati logiku za razvrstavanje podataka
+    axios.get('https://pomodoro-98f43.firebaseio.com/pomodoros.json')
+    .then(response => {
+        console.log(JSON.stringify(response.data));
+    })
+    .catch(error => {
+        console.log(error);
+        alert("Pomodoro can't be loaded!");
+    });
+
     return (
         <>
             <h3>Report</h3>

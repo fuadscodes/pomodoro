@@ -46,12 +46,12 @@ const TimeLeft = (props) => {
                             
                             axios.post('/pomodoros.json', pomodoro)
                             .then(response => {
-                                console.log(response)
+                                console.log(response);
                             })
                             .catch(error => {
                                 console.log(error)
-                            })
-
+                                message.danger('Error with database!');
+                            });
 
                             if(currentSessionType === 'Session') {
                                 isStarted = false;
