@@ -104,9 +104,9 @@ const dataSource = [
 
 export const Ranking = () => {
     return (
-        <>
-            <h3>Ranking</h3>
-            <Table size="medium" dataSource={dataSource} columns={columns} />
+      <>
+        <h3>Ranking</h3>
+        <Table size="medium" dataSource={dataSource} columns={columns} />
       </>
     )
 }

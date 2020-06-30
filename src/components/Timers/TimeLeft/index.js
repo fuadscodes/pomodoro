@@ -4,6 +4,7 @@ import momentDurationFormatSetup from 'moment-duration-format';
 import { message } from 'antd';
 import { TimeLeftWrapper, StartStop, PomodoroImage, Time } from './style';
 import { PlusButtonMedium, MinusButtonMedium } from '../components/Controls';
+import axios from '../../../config/axios-pomodoro';
 
 momentDurationFormatSetup(moment)
 
@@ -13,6 +14,7 @@ const TimeLeft = (props) => {
     const [timeLeft, setTimeLeft] = useState(props.sessionLength);
     const [currentSessionType, setCurrentSessionType] = useState('Session');
     const [disabled, setDisabled] = useState(false);
+    const [email] = useState(props.email);
 
 
     useEffect(() => {
@@ -35,6 +37,18 @@ const TimeLeft = (props) => {
                             props.setDisabled(false);
                             audioElement.current.play();
                             message.success("Thank you for using PomodoroTracker!", 2);
+                            
+                            /* Upis u bazu POST metodom */
+                            /*const pomodoro = {
+                                user: ,
+                                time: ,
+                                timeStamp: 
+                            };*/
+                            
+                            alert(email);
+                            axios.post('/pomodoros.json');
+
+
                             if(currentSessionType === 'Session') {
                                 isStarted = false;
                                 console.log("database");

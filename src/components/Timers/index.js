@@ -5,10 +5,11 @@ import moment from "moment";
 import TimeLeft from "./TimeLeft/index";
 import { TimersWrapper, BreakSession } from './style';
 
-const Timers = () => {
+const Timers = (props) => {
 
     const [sessionLength, setSessionLength] = useState(25*60);
     const [disabled, setDisabled] = useState(false);
+    const [email] = useState(props.email);
 
     const decrementSessionLength = () => {
         const newSessionLength = sessionLength - 60;
@@ -43,7 +44,7 @@ const Timers = () => {
 
     return (
         <TimersWrapper>
-            <TimeLeft sessionLength={sessionLength} breakLength={breakLength} setDisabled={setDisabled}/>
+            <TimeLeft email={email} sessionLength={sessionLength} breakLength={breakLength} setDisabled={setDisabled} />
             <BreakSession>
                 <Break
                     breakLengthInMinutes={breakLengthInMinutes}

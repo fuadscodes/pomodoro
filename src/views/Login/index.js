@@ -5,7 +5,7 @@ import fire from '../../config/fire';
 import { useHistory } from "react-router-dom";
 import { Wrapper } from '../../components/Wrapper';
 
-const Login = (props) => {
+const Login = () => {
 
   const [show, setShow] = useState(false);
   const [message, setMessage] = useState("");  
@@ -14,7 +14,6 @@ const Login = (props) => {
   const onFinish = values => {
     fire.auth().signInWithEmailAndPassword(values.email, values.password).then(
         (user) => {
-            console.log(user);
             history.replace("/dashboard");
         }
     ).catch((err) => {
