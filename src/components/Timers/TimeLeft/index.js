@@ -38,15 +38,19 @@ const TimeLeft = (props) => {
                             audioElement.current.play();
                             message.success("Thank you for using PomodoroTracker!", 2);
                             
-                            /* Upis u bazu POST metodom */
-                            /*const pomodoro = {
-                                user: ,
-                                time: ,
-                                timeStamp: 
-                            };*/
+                            const pomodoro = {
+                                user: email,
+                                time: props.sessionLength,
+                                timeStamp: new Date()
+                            };
                             
-                            alert(email);
-                            axios.post('/pomodoros.json');
+                            axios.post('/pomodoros.json', pomodoro)
+                            .then(response => {
+                                console.log(response)
+                            })
+                            .catch(error => {
+                                console.log(error)
+                            })
 
 
                             if(currentSessionType === 'Session') {
