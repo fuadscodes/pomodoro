@@ -1,114 +1,33 @@
-import React from 'react';
-import { Table } from 'antd';
-
-const dataSource = [
-    {
-      key: '1',
-      place: 1,
-      user: 'fuad.herac@gmail.com',
-      hours: 16
-    },
-    {
-        key: '1',
-        place: 1,
-        user: 'fuad.herac@gmail.com',
-        hours: 16
-      },
-      {
-        key: '1',
-        place: 1,
-        user: 'fuad.herac@gmail.com',
-        hours: 16
-      },
-      {
-        key: '1',
-        place: 1,
-        user: 'fuad.herac@gmail.com',
-        hours: 16
-      },
-      {
-        key: '1',
-        place: 1,
-        user: 'fuad.herac@gmail.com',
-        hours: 16
-      },
-      {
-        key: '1',
-        place: 1,
-        user: 'fuad.herac@gmail.com',
-        hours: 16
-      },
-
-      {
-        key: '1',
-        place: 1,
-        user: 'fuad.herac@gmail.com',
-        hours: 16
-      },
-      {
-        key: '1',
-        place: 1,
-        user: 'fuad.herac@gmail.com',
-        hours: 16
-      },
-
-      {
-        key: '1',
-        place: 1,
-        user: 'fuad.herac@gmail.com',
-        hours: 16
-      },
-      {
-        key: '1',
-        place: 1,
-        user: 'fuad.herac@gmail.com',
-        hours: 16
-      },
-      {
-        key: '1',
-        place: 1,
-        user: 'fuad.herac@gmail.com',
-        hours: 16
-      },    {
-        key: '1',
-        place: 1,
-        user: 'fuad.herac@gmail.com',
-        hours: 16
-      },
-      {
-        key: '1',
-        place: 1,
-        user: 'fuad.herac@gmail.com',
-        hours: 16
-      },
-  ];
-  
-  const columns = [
-    {
-      title: 'Place',
-      dataIndex: 'place',
-      key: 'place',
-      responsive: ['md'],
-    },
-    {
-      title: 'User',
-      dataIndex: 'user',
-      key: 'user',
-    },
-    {
-      title: 'Hours',
-      dataIndex: 'hours',
-      key: 'hours',
-    },
-  ];
+import React, { useState } from 'react';
+import axios from '../../config/axios-pomodoro';
 
 export const Ranking = () => {
-    return (
-      <>
-        <h3>Ranking</h3>
-        <Table size="medium" dataSource={dataSource} columns={columns} />
-      </>
-    )
+
+  /* Prepraviti tabelu na listu (lijevo broj gore mail dole sati) */
+
+  const [dataSource, setDataSource] = useState(null);
+
+  axios.get('https://pomodoro-98f43.firebaseio.com/pomodoros.json')
+  .then(response => {
+      let firebase = require("firebase");
+
+      let dbRef = firebase.database().ref("pomodoros");
+
+      dbRef.orderByChild("time").on("child_added", snap => {
+          //setDataSource(snap.val());
+          console.log(dataSource);
+      })
+  })
+  .catch(error => {
+      console.log(error);
+      alert("Ranking can't be loaded!");
+  });
+
+  return (
+    <>
+      <h3>Ranking</h3>
+    </>
+  )
 }
 
 export default Ranking;

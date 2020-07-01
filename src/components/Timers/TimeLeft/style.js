@@ -32,7 +32,7 @@ export const PomodoroImage = styled.div`
 export const Time = styled.div`
     color: #f8f4f4;
     font-weight: bold;
-    padding-top: 53%;
+    padding-top: 60%;
     font-size: 30px;
 `;
 
