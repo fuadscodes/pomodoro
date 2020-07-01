@@ -68,7 +68,7 @@ const Dashboard = (props) => {
               <Breadcrumb style={{ margin: '16px 0' }}>
                 <Breadcrumb.Item>User / {email}</Breadcrumb.Item>
               </Breadcrumb>
-              <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
+              <div className="site-layout-background" style={{ padding: 0, minHeight: 360 }}>
                 {content}
               </div>
             </Content>
