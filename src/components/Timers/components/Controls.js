@@ -1,12 +1,6 @@
 import styled from 'styled-components';
 import { Button } from 'antd';
 
-export const Controls = styled.div`
-    display: flex;
-    justify-content: space-between;
-    width: 85px;
-`;
-
 export const PlusButtonMedium = styled(Button)`
     width: 40%;
     color: #52c41a;
@@ -16,6 +10,12 @@ export const PlusButtonMedium = styled(Button)`
         cursor: pointer;
         border-color: #95de64;
     };
+`;
+
+export const Controls = styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: 85px;
 `;
 
 export const PlusButtonSmall = styled(Button)`
