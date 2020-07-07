@@ -13,6 +13,10 @@ export const Ranking = () => {
   let users = {};
   let email = "";
 
+  let currentTime = new Date();
+  let currentMonth = currentTime.getMonth()+1;
+  let currentYear = currentTime.getFullYear();
+
   const search = (value) => {
     email = value;
     let keysSorted = null;
@@ -36,15 +40,19 @@ export const Ranking = () => {
         for(let i = 0; i < temp.length; i+=12) {
           let email = JSON.stringify(response.data).split('"')[(i-1)];
           let sec = (JSON.stringify(response.data).split('"')[i-8]);
-          if(!users[email]) {
-            if(sec) {
-              let obj = {[email]: parseInt(sec.replace(':', '').replace(',', ''))};
-              Object.assign(users, obj);
-            }
-          } else {
-            let temp = parseInt(users[email]);
-            if(sec) {
-              users[email] = temp + parseInt(sec.replace(':', '').replace(',', ''));
+          let time = JSON.stringify(response.data).split('"')[i-5];
+        
+          if(time && parseInt(time.split("-")[0]) === currentYear && parseInt(time.split("-")[1]) === currentMonth) {
+            if(!users[email]) {
+              if(sec) {
+                let obj = {[email]: parseInt(sec.replace(':', '').replace(',', ''))};
+                Object.assign(users, obj);
+              }
+            } else {
+              let temp = parseInt(users[email]);
+              if(sec) {
+                users[email] = temp + parseInt(sec.replace(':', '').replace(',', ''));
+              }
             }
           }
       }
@@ -69,7 +77,7 @@ export const Ranking = () => {
 
   return (
     <>
-      <h3>Ranking</h3>
+      <h3>Ranking (for this month)</h3>
       <Wrapper>
         <StyledInput size="large" placeholder="Search by email" prefix={<UserOutlined />} onChange={(event) => {search(event.target.value)}} />
       </Wrapper>
