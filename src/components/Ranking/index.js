@@ -7,9 +7,28 @@ import { UserOutlined } from '@ant-design/icons';
 
 export const Ranking = () => {
 
-  const [content, setContent] = useState(null);
+  const [content, setContent] = useState(null)
+  const [data, setData] = useState(null);
 
   let users = {};
+  let email = "";
+
+  const search = (value) => {
+    email=value;
+    console.log(email);
+    let keysSorted = null;
+    keysSorted = Object.keys(data).sort(function(a,b){return users[b]-users[a]});
+    let cont = <div>
+      {keysSorted.map((user, index) => {
+          if(user.substring(0, email.length) === email) {
+            return (<ListItem user={user} seconds={data[user]} number={index+1} key={index+1}/>);
+          } else {
+            return null;
+          }
+      })}
+    </div>
+    setContent(cont);
+  }
 
   useEffect(() => {
       axios.get('https://pomodoro-98f43.firebaseio.com/pomodoros.json')
@@ -39,7 +58,7 @@ export const Ranking = () => {
         })}
       </div>
       setContent(cont);
-
+      setData(users);
     })
     .catch(error => {
         console.log(error);
@@ -52,7 +71,7 @@ export const Ranking = () => {
     <>
       <h3>Ranking</h3>
       <Wrapper>
-        <StyledInput size="large" placeholder="Search by email" prefix={<UserOutlined />} />
+        <StyledInput size="large" placeholder="Search by email" prefix={<UserOutlined />} onChange={(event) => {search(event.target.value)}} />
       </Wrapper>
       
       {content ? content: <Wrapper><Spin size="large" /></Wrapper>}

@@ -2,9 +2,11 @@ import styled from 'styled-components';
 import { Input } from 'antd';
 
 export const StyledInput = styled(Input)`
-    width: 60%;
-    border-radius: 25px;
+    width: 50%;
     margin: 5px;
+    @media (max-width: 450px) {
+        width: 100%;
+    }
 `;
 
 export const Wrapper = styled.div`
