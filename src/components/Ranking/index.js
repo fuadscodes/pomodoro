@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from '../../config/axios-pomodoro';
 import { Spin } from 'antd';
 import ListItem from '../ListItem/index';
-import { StyledInput, StyledInputWrapper } from './style';
+import { StyledInput, Wrapper } from './style';
 import { UserOutlined } from '@ant-design/icons';
 
 export const Ranking = () => {
@@ -51,12 +51,11 @@ export const Ranking = () => {
   return (
     <>
       <h3>Ranking</h3>
-      <StyledInputWrapper>
+      <Wrapper>
         <StyledInput size="large" placeholder="Search by email" prefix={<UserOutlined />} />
-      </StyledInputWrapper>
+      </Wrapper>
       
-
-      {content ? content: <Spin size="large" />}
+      {content ? content: <Wrapper><Spin size="large" /></Wrapper>}
     </>
   )
 }

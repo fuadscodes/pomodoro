@@ -7,7 +7,8 @@ export const StyledInput = styled(Input)`
     margin: 5px;
 `;
 
-export const StyledInputWrapper = styled.div`
+export const Wrapper = styled.div`
     display: flex;
     justify-content: center;
+    width: 100%;
 `;
