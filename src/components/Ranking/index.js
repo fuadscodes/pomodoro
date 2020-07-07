@@ -14,8 +14,7 @@ export const Ranking = () => {
   let email = "";
 
   const search = (value) => {
-    email=value;
-    console.log(email);
+    email = value;
     let keysSorted = null;
     keysSorted = Object.keys(data).sort(function(a,b){return users[b]-users[a]});
     let cont = <div>
@@ -65,6 +64,7 @@ export const Ranking = () => {
         alert("Ranking can't be loaded!");
     });
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
