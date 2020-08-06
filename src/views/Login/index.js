@@ -38,7 +38,7 @@ const Login = () => {
             rules={[
             {
                 required: true,
-                message: 'Please input your aaaa!',
+                message: 'Please input your e-mail!',
             },
             ]}
         >
