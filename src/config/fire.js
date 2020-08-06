@@ -4,7 +4,7 @@ var firebaseConfig = {
     apiKey: "AIzaSyBwjDza0FBfwh8A_nbFvcCc2bKIzt2OwXI",
     authDomain: "pomodoro-98f43.firebaseapp.com",
     databaseURL: "https://pomodoro-98f43.firebaseio.com",
-    projectId: "pomodoro-98f43",
+    projectId: "pomodoro-98f42",
     storageBucket: "pomodoro-98f43.appspot.com",
     messagingSenderId: "687532534854",
     appId: "1:687532534854:web:d17fbbb5e7e4c92d80ee47",
